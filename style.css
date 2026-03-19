@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background-color: #111;
   color: #fff;
   display: flex;
@@ -26,7 +26,7 @@ body {
   margin-top: 3rem;
 }
 
-#menu input,
+#menu input:not([type="range"]),
 #menu button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -94,7 +94,9 @@ body {
   cursor: pointer;
   transition: 0.3s;
   text-align: center;
-  box-shadow: 0 0 10px #0f0, 0 0 20px #0f0 inset;
+  box-shadow:
+    0 0 10px #0f0,
+    0 0 20px #0f0 inset;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -103,11 +105,55 @@ body {
 #controls button:hover {
   background-color: #0f0 !important;
   color: #000 !important;
-  box-shadow: 0 0 15px #0f0, 0 0 25px #0f0 inset;
+  box-shadow:
+    0 0 15px #0f0,
+    0 0 25px #0f0 inset;
+}
+
+#audioControls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #volumeControl {
-  width: 100px;
+  width: 200px;
+  cursor: pointer;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(
+    to right,
+    #0f0 0%,
+    #0f0 var(--value),
+    #444 var(--value),
+    #444 100%
+  );
+  border-radius: 5px;
+  outline: none;
+}
+
+#volumeControl::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #f0f;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px #f0f;
+}
+
+#volumeControl::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #f0f;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px #f0f;
 }
 
 /* Controles mobile */
@@ -242,6 +288,6 @@ body {
   }
 
   #volumeControl {
-    width: 80px;
+    width: 120px;
   }
 }

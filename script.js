@@ -49,8 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let isMuted = false;
   let musicStarted = false;
 
-  audio.volume = 0.1;
+  audio.volume = 0.5;
   volumeControl.value = audio.volume;
+  volumeControl.style.setProperty("--value", audio.volume * 100 + "%");
 
   function playMusic() {
     audio.src = musicFiles[currentTrackIndex];
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const volume = parseFloat(volumeControl.value);
     audio.volume = volume;
     audio.muted = volume <= 0.01;
+    volumeControl.style.setProperty("--value", volume * 100 + "%");
   });
 
   prevTrackBtn.addEventListener("click", () => {
